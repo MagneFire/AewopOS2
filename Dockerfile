@@ -12,7 +12,7 @@ RUN apt-get -y update
 RUN apt-get install -y git make cmake gcc g++ python python-serial gawk texinfo \
                        doxygen libtool bzip2 wget unzip help2man libtool-bin \
                        sed python-dev libncurses-dev ncurses-dev bison flex gperf sed \
-                       automake autoconf libexpat-dev expat ca-certificates
+                       automake autoconf libexpat-dev expat ca-certificates patch
 
 # Update certificates, for the download part of the esp-open-sdk
 RUN update-ca-certificates
@@ -28,6 +28,10 @@ WORKDIR /opt/
 RUN git clone --recursive https://github.com/pfalcon/esp-open-sdk.git
 # Change to the esp-open-sdk directory.
 WORKDIR /opt/esp-open-sdk
+# Download patch file.
+run wget https://github.com/MagneFire/AewopOS2-Docker/raw/master/esp-open-sdk-3.0.patch
+# Patch sdk.
+RUN patch < esp-open-sdk-3.0.patch
 # Build the esp-open-sdk.
 RUN make
 # Add the Xtensa path to the $PATH variable.
