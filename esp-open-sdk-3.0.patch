@@ -77,15 +77,6 @@ diff --git a/Makefile b/Makefile
 index fca1f17..97dd40c 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -10,7 +10,7 @@ TOOLCHAIN = $(TOP)/xtensa-lx106-elf
- 
- # Vendor SDK version to install, see VENDOR_SDK_ZIP_* vars below
- # for supported versions.
--VENDOR_SDK = 2.2.0
-+VENDOR_SDK = 3.0.0
- 
- .PHONY: crosstool-NG toolchain libhal libcirom sdk
- 
 @@ -23,6 +23,8 @@ UNZIP = unzip -q -o
  VENDOR_SDK_ZIP = $(VENDOR_SDK_ZIP_$(VENDOR_SDK))
  VENDOR_SDK_DIR = $(VENDOR_SDK_DIR_$(VENDOR_SDK))

@@ -29,7 +29,7 @@ RUN git clone --recursive https://github.com/pfalcon/esp-open-sdk.git
 # Change to the esp-open-sdk directory.
 WORKDIR /opt/esp-open-sdk
 # Download patch file.
-run wget https://github.com/MagneFire/AewopOS2-Docker/raw/master/esp-open-sdk-3.0.patch
+RUN wget https://github.com/MagneFire/AewopOS2-Docker/raw/master/esp-open-sdk-3.0.patch
 # Patch sdk.
 RUN patch < esp-open-sdk-3.0.patch
 # Build the esp-open-sdk.
