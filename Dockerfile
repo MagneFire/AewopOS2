@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch-slim
 
 MAINTAINER Darrel Griët
 
@@ -36,3 +36,13 @@ RUN patch < esp-open-sdk-3.0.patch
 RUN make
 # Add the Xtensa path to the $PATH variable.
 ENV PATH /opt/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
+# Set working directory to /opt.
+WORKDIR /opt/
+# Clone the esptool2.
+RUN git clone https://github.com/raburton/esptool2.git
+# Change to the esp-open-sdk directory.
+WORKDIR /opt/esptool2
+# Build esptool2.
+RUN make
+# Add the esptool2 path to the $PATH variable.
+ENV PATH /opt/esptool2:$PATH
